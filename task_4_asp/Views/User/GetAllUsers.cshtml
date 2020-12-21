@@ -1,0 +1,58 @@
+﻿@model List<task_4_asp.ViewModels.UserViewModel>
+
+<form asp-controller="Users" method="post">
+    <div class="btn-group mt-4 mb-4" role="group" aria-label="Basic example">
+        <button type="submit" formaction="DeleteUsers" class="" style="
+            background-color: transparent;
+            border: none;">
+            <i class="material-icons">person_remove</i>
+        </button>
+        <button type="submit" formaction="BlockUsers" class="" style="
+            background-color: transparent;
+            border: none;">
+            <i class="material-icons">unpublished</i>
+        </button>
+        <button type="submit" formaction="UnBlockUsers" class="" style="
+            background-color: transparent;
+            border: none;">
+            <i class="material-icons">published_with_changes</i>
+        </button>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">
+                    <input type="checkbox" class="form-check-input" name="selectAll" id="selectAll" />
+                    <label for="selectAll" class="form-check-label">Select all</label>
+                    <br />
+                    <input type="checkbox" class="form-check-input" name="unSelectAll" id="unSelectAll" />
+                    <label for="unSelectAll" class="form-check-label">Unselect all</label>
+                </th>
+                <th scope="col">Id</th>
+                <th scope="col">UserName</th>
+                <th scope="col">Email</th>
+                <th scope="col">Registraion date</th>
+                <th scope="col">Last login</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td scope="row">
+                        <input type="checkbox" name="userIds" class="userCheckBox" value="@user.Id" />
+                    </td>
+                    <td scope="row">@user.Id</td>
+                    <td scope="row">@user.UserName</td>
+                    <td scope="row">@user.Email</td>
+                    <td scope="row">@user.RegistrationDate</td>
+                    <td scope="row">@user.LastLoginDate</td>
+                    <td>@(user.IsBlocked ? "BLOCKED" : "ACTIVE")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
