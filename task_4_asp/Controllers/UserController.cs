@@ -91,7 +91,6 @@ namespace task_4_asp.Controllers
                 var foundUser = await userManager.FindByIdAsync(id);
                 foundUser.IsBlocked = false;
                 await userManager.UpdateAsync(foundUser);
-                await userManager.UpdateSecurityStampAsync(foundUser);
 
             }
 
