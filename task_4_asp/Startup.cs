@@ -41,6 +41,11 @@ namespace task_4_asp
                 //option.Cookie.SecurePolicy = CookieSecurePolicy.Always;
             });
 
+            services.Configure<SecurityStampValidatorOptions>(options =>
+            {
+                options.ValidationInterval = TimeSpan.FromMinutes(0);
+            });
+
             services.Configure<IdentityOptions>(options =>
             {
    
